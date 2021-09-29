@@ -2,7 +2,7 @@
 from importlib import import_module
 import os
 from flask import Flask, render_template, Response
-
+from playsound import playsound
 # import camera driver
 if os.environ.get('CAMERA'):
     Camera = import_module('camera_' + os.environ['CAMERA']).Camera
@@ -28,6 +28,11 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+@app.route("/audio_feed")
+def streamwav():
+    # Camera.play_audio()
+    playsound("sample.wav")
+    return Response(True, mimetype="audio/x-wav")
 
 @app.route('/video_feed')
 def video_feed():

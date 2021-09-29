@@ -2,7 +2,6 @@ import os
 import cv2
 from base_camera import BaseCamera
 import pafy
-
 class Camera(BaseCamera):
     video_source = 0
 
@@ -14,6 +13,8 @@ class Camera(BaseCamera):
     @staticmethod
     def set_video_source(source):
         Camera.video_source = source
+
+
 
     @staticmethod
     def frames():
